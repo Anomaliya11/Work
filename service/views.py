@@ -1,12 +1,22 @@
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404
+from django.http import HttpResponse, Http404, FileResponse, JsonResponse
 from django.urls import reverse
+from django.template.loader import get_template
+from django.shortcuts import render
 
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Product
 
 def index(request):
-    return HttpResponse('Hello World')
+    return render(request, 'index.html')
+    # template = get_template('index.html')
+    # return HttpResponse(template.render())
+
+# def index(request):
+    # return HttpResponse('Hello World')
+    cont = {'Hello ', 'world'}
+    resp = HttpResponse(cont)
+    return resp
 
 def page(request, page_num):
     return HttpResponse(f'Page {page_num}')
@@ -20,6 +30,30 @@ def about(request, id):
 
     return HttpResponse('OK!')
 
+
+def json_show(req):
+    data = {'cost':14, 'title':'book'}
+    return JsonResponse(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+# def file_show(req):
+    file = 'service/images.jpeg'
+    return FileResponse(open(file, 'rb'), as_attachment=True, filename='home')
 
 
 

@@ -1,0 +1,21 @@
+Author
+    -id (PK not null)
+    -name
+    -age
+    -book_id (Foreign Key) (1, 2, 3)
+
+
+Book_1
+    -id
+    -title
+    -amount_page
+
+Book_2
+    -id
+    -title
+    -amount_page
+
+Book_3
+    -id
+    -title
+    -amount_page
