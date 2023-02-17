@@ -1,0 +1,35 @@
+[
+    {
+        "model": "web_lib.Author",
+        "pk": "123e4567-e89b-12d3-a456-426655440000",
+        "fields": {
+            "name": "Nem",
+            "age": 25,
+            "email": "dos@mail.ru",
+            "lit_type": "b"
+        }
+    },
+    {
+        "model": "web_lib.Book",
+        "pk": 6,
+        "fields": {
+            "title": "book_6",
+            "description": "bbb",
+            "page_num": 100,
+            "published": "2023-02-16 10:37:00.400378+00:00",
+            "author": "123e4567-e89b-12d3-a456-426655440000"
+        }  
+    },
+    {
+        "model": "web_lib.Book",
+        "pk": 7,
+        "fields": {
+            "title": "book_7",
+            "description": "bbb",
+            "page_num": 120,
+            "published": "2023-02-16 10:37:00.400378+00:00",
+            "author": "123e4567-e89b-12d3-a456-426655440000"
+        }  
+    }
+
+]
