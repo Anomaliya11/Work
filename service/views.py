@@ -7,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Product
 
+
 def index(request):
     return render(request, 'index.html')
     # template = get_template('index.html')
@@ -18,8 +19,10 @@ def index(request):
     resp = HttpResponse(cont)
     return resp
 
+
 def page(request, page_num):
     return HttpResponse(f'Page {page_num}')
+
 
 def about(request, id):
     try:
@@ -32,31 +35,13 @@ def about(request, id):
 
 
 def json_show(req):
-    data = {'cost':14, 'title':'book'}
+    data = {'cost': 14, 'title': 'book'}
     return JsonResponse(data)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 
 # def file_show(req):
     file = 'service/images.jpeg'
     return FileResponse(open(file, 'rb'), as_attachment=True, filename='home')
-
-
-
 
     # return HttpResponse(f'{request.headers}')
     # return HttpResponse(f'{request.body}')

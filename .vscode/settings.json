@@ -1,3 +1,22 @@
 {
-    "python.pythonPath": "venv/bin/python3.11"
+    "python.pythonPath": "venv/bin/python3.11",
+
+    // "editor.formatOnSave": true,
+    // "python.formatting.provider": "autopep8",
+    // "python.linting.enabled": true,
+    // "python.linting.lintOnSave": true,
+    // "python.formatting.blackArgs": [
+    //     "--line-length=120"
+    // ],
+    // "python.linting.pylintEnabled": true,
+    // "python.linting.pylintArgs": [
+    //     "--load-plugins",
+    //     "pylint_django",
+    //     "--django-settings-module=core.settings",
+    //     "--max-line-length=120"
+    // ],
+    // "editor.codeActionsOnSave": {
+    //     "source.organizeImports": true
+    // },
+    // "python.linting.mypyEnabled": true
 }
