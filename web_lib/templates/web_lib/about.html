@@ -1,20 +1,19 @@
+{% extends 'web_lib/main.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="stylesheet" href="{% static 'web/css/web.css' %}">
-</head>
-<body>
-   <h1>About</h1> 
-   <p>Hello!</p>
-   <img src="{% static 'web/images/book.png' %}" alt="book" width="200" height="150" onclick="isAbout()">
-   <script src="{% static 'web/js/web.js' %}"></script>
-</body>
-</html>
+{% block content %}
+
+    <div class="container">
+        <h1>About</h1> 
+        <p>Hello!</p>
+        <img src="{% static 'web/images/book.png' %}" alt="book" width="200" height="150" onclick="isAbout()">
+    </div> 
+    
+    <script src="{% static 'web/js/web.js' %}"></script>
+
+{% endblock  %}
+
+   
+
 
 
