@@ -4,30 +4,38 @@
 
 <div class="container">
     <h1>Books</h1>
-    <a class="btn btn-sm btn-info" href="{% url 'create_book' %}">Создать книгу</a>
-    <hr>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if books %}
-            {% for book in books %}
-                    <tr>
-                        <td>{{book.title}}</td>
-                        <td>{{book.description}}</td>
-                        <td>{{book.published|date:'DATETIME_FORMAT'}}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <p>No books</p>
-            {% endif %}
-        </tbody>
-    </table>   
+    <div class="card card-block">
+        <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_book' %}">Создать книгу</a>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">PK</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Дата публикации</th>
+                    <th scope="col">Изменить/th>
+                    <th scope="col">Удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if books %}
+                {% for book in books %}
+                        <tr>
+                            <td>{{book.pk}}</td>
+                            <td>{{book.title}}</td>
+                            <td>{{book.description}}</td>
+                            <td>{{book.published|date:'DATETIME_FORMAT'}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'update_book' book.pk %}">Обновить</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_book' book.pk %}">Удалить</a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <p>Нет книг</p>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>   
 </div>
 
 

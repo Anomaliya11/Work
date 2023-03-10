@@ -9,19 +9,6 @@ def main(request):
     return render(request, "web_lib/main.html", {"form": book_form})
 
 
-def create_book(req):
-    book_form = BookForm()
-    if req.method == "POST":
-        book_form = BookForm(req.POST)
-        if book_form.is_valid():
-            book = book_form.save(commit=False)
-            book.description = book_form.cleaned_data['description'] + ' ' + book_form.cleaned_data['color']
-            book.save()
-            book_form.save_m2m()
-            return redirect('books')
-    return render(req, "web_lib/book_form.html", {"form": book_form})
-
-
     # if request.method == "GET":
         # form = SearchAuthor(request.GET)
         # form_post = PostAuthor(request.POST)
@@ -54,6 +41,39 @@ def author_id(request, pk):
 def books(request):
     all_books = {'books': Book.objects.all()}
     return render(request, 'web_lib/books.html', all_books)
+
+def create_book(req):
+    book_form = BookForm()
+    if req.method == "POST":
+        book_form = BookForm(req.POST)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.description = book_form.cleaned_data['description'] + ' ' + book_form.cleaned_data['color']
+            book.save()
+            book_form.save_m2m()
+            return redirect('books')
+    return render(req, "web_lib/book_form.html", {"form": book_form})
+
+def update_book(req, pk):
+    book = Book.objects.get(pk=pk)
+    book_form = BookForm(instance=book)
+    if req.method == "POST":
+        book_form = BookForm(req.POST, instance=book)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.description = book_form.cleaned_data['description'] + ' ' + book_form.cleaned_data['color']
+            book.save()
+            book_form.save_m2m()
+            return redirect('books')
+    return render(req, "web_lib/book_form.html", {"form": book_form})
+
+def delete_book(req, pk):
+    book = Book.objects.get(pk=pk)
+    if req.method == "POST":
+        book.delete()
+        return redirect('books')
+    return render(req, "web_lib/delete_book.html", {'book': book})
+
 
 def about(request):
     return render(request, 'web_lib/about.html')

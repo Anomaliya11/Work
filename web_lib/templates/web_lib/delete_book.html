@@ -1,0 +1,9 @@
+{% extends 'web_lib/books.html' %}
+{% block content %}
+    <p>Вы точно хотите удалить книгу № {{ book.pk }} ?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <a class="btn btn-primary btn-sm btn-block" href="{% url 'books' %}">Назад</a>
+        <input type="submit" value="Удалить">
+    </form> 
+{% endblock  %}
