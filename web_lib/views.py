@@ -1,13 +1,31 @@
 from django.shortcuts import render, redirect
 from web_lib.models import Author, Book
 
-from .forms import SearchAuthor, PostAuthor
+from .forms import SearchAuthor, PostAuthor, BookForm
+from django.forms import modelform_factory, widgets
 
 def main(request):
+    book_form = BookForm()
+    return render(request, "web_lib/main.html", {"form": book_form})
+
+
+def create_book(req):
+    book_form = BookForm()
+    if req.method == "POST":
+        book_form = BookForm(req.POST)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.description = book_form.cleaned_data['description'] + ' ' + book_form.cleaned_data['color']
+            book.save()
+            book_form.save_m2m()
+            return redirect('books')
+    return render(req, "web_lib/book_form.html", {"form": book_form})
+
+
     # if request.method == "GET":
-        form = SearchAuthor(request.GET)
-        form_post = PostAuthor(request.POST)
-        return render(request, 'web_lib/main.html', {"form": form, "form_post":form_post})
+        # form = SearchAuthor(request.GET)
+        # form_post = PostAuthor(request.POST)
+        # return render(request, 'web_lib/main.html', {"form": form, "form_post":form_post})
     # return render(request, 'web_lib/main.html')
 
 # def form_search(req):

@@ -4,6 +4,8 @@
 
 <div class="container">
     <h1>Books</h1>
+    <a class="btn btn-sm btn-info" href="{% url 'create_book' %}">Создать книгу</a>
+    <hr>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,17 +16,19 @@
         </thead>
         <tbody>
             {% if books %}
-                {% for book in books %}
+            {% for book in books %}
                     <tr>
-                        <th scope="row">{{book.title}}</th>
+                        <td>{{book.title}}</td>
                         <td>{{book.description}}</td>
                         <td>{{book.published|date:'DATETIME_FORMAT'}}</td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <p>No books</p>
-            {% endif %}}
+            {% endif %}
         </tbody>
-    </table>
+    </table>   
 </div>
+
+
 {% endblock %}
